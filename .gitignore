@@ -1,0 +1,29 @@
+# Compiled class files
+*.class
+
+# Executables and JARs
+*.jar
+
+# Build directories
+/target/
+/build/
+/dist/
+
+# Maven specific
+dependency-reduced-pom.xml
+
+# NetBeans specific
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Logs and temp files
+*.log
+*.lst
+*.tmp
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
