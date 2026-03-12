@@ -10,6 +10,7 @@ import java.time.LocalTime;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 public class Controller {
   
@@ -109,6 +110,15 @@ public class Controller {
             }
         };
         
+        JTable table = new JTable(model);
+        TableColumnModel colW = table.getColumnModel();
+        colW.getColumn(0).setPreferredWidth(5);
+        colW.getColumn(1).setPreferredWidth(200);
+        colW.getColumn(2).setPreferredWidth(50);
+        colW.getColumn(3).setPreferredWidth(300);
+        colW.getColumn(4).setPreferredWidth(10);
+        colW.getColumn(5).setPreferredWidth(10);
+       
         model.addTableModelListener(e -> {
             int row = e.getFirstRow();
             int column = e.getColumn();
@@ -144,7 +154,7 @@ public class Controller {
             e.printStackTrace();
         }
         
-        return new JTable(model);
+        return table;
     }
     
     //GUI TABLE
@@ -157,6 +167,15 @@ public class Controller {
                 return column == 2 || column == 3;
             }
         };
+        
+        JTable table = new JTable(model);
+        TableColumnModel colW = table.getColumnModel();
+        colW.getColumn(0).setPreferredWidth(5);
+        colW.getColumn(1).setPreferredWidth(200);
+        colW.getColumn(2).setPreferredWidth(50);
+        colW.getColumn(3).setPreferredWidth(300);
+        colW.getColumn(4).setPreferredWidth(10);
+        colW.getColumn(5).setPreferredWidth(10);
         
         model.addTableModelListener(e -> {
             int row = e.getFirstRow();
@@ -193,6 +212,6 @@ public class Controller {
             e.printStackTrace();
         }
         
-        return new JTable(model);
+        return table;
     }
 }
