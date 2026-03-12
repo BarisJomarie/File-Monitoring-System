@@ -3,7 +3,7 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>C:\Users\ADMIN\Documents\NetBeansProjects\FileMonitoring\target\FileMonitoring-1.0-SNAPSHOT.jar</jar>
-  <outfile>C:\Users\ADMIN\Documents\NetBeansProjects\FileMonitoring\File Monitoring.exe</outfile>
+  <outfile>C:\Users\ADMIN\Documents\NetBeansProjects\FileMonitoring\src\File Monitoring.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -11,17 +11,14 @@
   <downloadUrl></downloadUrl>
   <supportUrl></supportUrl>
   <stayAlive>false</stayAlive>
-  <restartOnCrash>true</restartOnCrash>
+  <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
   <icon>C:\Users\ADMIN\Downloads\java.ico</icon>
-  <classPath>
-    <mainClass>com.mycompany.filemonitoring.FileMonitoring</mainClass>
-  </classPath>
   <jre>
     <path>%JAVA_HOME%;%PATH%</path>
     <requiresJdk>false</requiresJdk>
     <requires64Bit>false</requires64Bit>
-    <minVersion></minVersion>
+    <minVersion>25</minVersion>
     <maxVersion></maxVersion>
   </jre>
 </launch4jConfig>
