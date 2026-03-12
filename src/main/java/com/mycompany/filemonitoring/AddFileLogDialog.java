@@ -18,7 +18,7 @@ public class AddFileLogDialog extends JDialog {
         super (parent, "Add New Log", true);
         this.controller = controller;
         
-        setSize(300, 300);
+        setSize(450, 300);
         setLocationRelativeTo(parent);
         
         formUI = new AddFormUI();
@@ -26,6 +26,7 @@ public class AddFileLogDialog extends JDialog {
         add(formUI);
         
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 0));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
         buttonPanel.add(formUI.addButton);
         buttonPanel.add(formUI.cancelButton);
         add(buttonPanel, BorderLayout.SOUTH);   
@@ -33,13 +34,25 @@ public class AddFileLogDialog extends JDialog {
         // Actions
         formUI.addButton.addActionListener(e -> {
             OfficeOption selectedOffice = (OfficeOption) formUI.officeBox.getSelectedItem();
-            String officeValue = selectedOffice.getValue();
-
-            String received = formUI.receivedF.getText();
-            String fileName = formUI.fileNameF.getText();
-            LocalDate date = new java.sql.Date(formUI.dateChooser.getDate().getTime()).toLocalDate();
-            LocalTime time = new java.sql.Time(((Date) formUI.timeSpinner.getValue()).getTime()).toLocalTime();
-            String type = (String) formUI.typeBox.getSelectedItem();
+            String officeValue = selectedOffice != null ? selectedOffice.getValue() : "";
+            String received = formUI.receivedF.getText().trim();
+            String fileName = formUI.fileNameF.getText().trim();
+            Date chosenDate = formUI.dateChooser.getDate();
+            Date chosenTime = (Date) formUI.timeSpinner.getValue();
+ 
+            // Validation
+            if (officeValue.isEmpty() || received.isEmpty() || fileName.isEmpty() || chosenDate == null || chosenTime == null) {
+                JOptionPane.showMessageDialog(this,
+                        "Please fill in all fields before adding.",
+                        "Missing Information",
+                        JOptionPane.WARNING_MESSAGE);
+                return; // stop here, do not insert
+            }
+            
+            LocalDate date = new java.sql.Date(chosenDate.getTime()).toLocalDate();
+            LocalTime time = new java.sql.Time(chosenTime.getTime()).toLocalTime();
+            
+            String type = formUI.inR.isSelected() ? "in" : "out";
 
             controller.insertLog(officeValue, received, fileName, date, time, type);
             dispose();
